@@ -1,0 +1,84 @@
+{
+  "name": "XingHen",
+  "version": "0.0.1",
+  "description": "An Electron application with React",
+  "main": "./out/main/index.js",
+  "author": "dasheng",
+  "type": "module",
+  "homepage": "",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "build:dev": "electron-vite build && electron-vite dev",
+    "postinstall": "electron-builder install-app-deps",
+    "build:unpack": "electron-vite build && electron-builder --dir",
+    "build:win": "electron-vite build && electron-builder --win",
+    "build:start": "electron-vite build && electron-builder --win && dist/win-unpacked/xinghen.exe",
+    "build:mac": "electron-vite build && electron-builder --mac",
+    "build:linux": "electron-vite build && electron-builder --linux",
+    "package": "electron-forge package",
+    "dist": "electron-vite build && electron-builder --win"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@reduxjs/toolkit": "^2.2.6",
+    "antd": "^5.19.1",
+    "axios": "^1.7.3",
+    "cheerio": "^1.0.0",
+    "electron-store": "^10.0.0",
+    "lodash": "^4.17.21",
+    "p-limit": "^6.1.0",
+    "react-redux": "^9.1.2",
+    "redux": "^5.0.1"
+  },
+  "devDependencies": {
+    "@electron-toolkit/eslint-config": "^1.0.2",
+    "@electron-toolkit/eslint-config-prettier": "^2.0.0",
+    "@electron/fuses": "^1.8.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "electron": "^31.0.2",
+    "electron-vite": "^2.3.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.3",
+    "postcss": "^8.4.41",
+    "prettier": "^3.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.1",
+    "sass": "^1.77.8",
+    "tailwindcss": "^3.4.9",
+    "vite": "^5.3.1"
+  },
+  "build": {
+    "directories": {
+      "output": "dist"
+    },
+    "extraResources": [
+      {
+        "from": "./config/subdomain.txt",
+        "to": "../config/subdomain.txt"
+      }
+    ],
+    "files": [
+      "out/**/*",
+      "resources/**/*",
+      "public/**/*"
+    ],
+    "win": {
+      "target": [
+        "dir",
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": true
+    }
+  }
+}
