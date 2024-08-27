@@ -49,19 +49,10 @@ export class SubDomainBrute {
     });
   }
 
-  _resolveSubdomain2(subdomain, domain) {
-    const fullDomain = `${subdomain}.${domain}`;
-    return new Promise(async (resolve) => {
-      const resolveRes = await ipcRenderer.invoke('dns-resolve', fullDomain);
-      resolve(resolveRes);
-    });
-  }
-
   // 获得一个任务
   _getTask(subdomain, domain, timeout) {
     return () => {
-      // return this._resolveSubdomain(subdomain, domain, timeout);
-      return this._resolveSubdomain2(subdomain, domain);
+      return this._resolveSubdomain(subdomain, domain, timeout);
     };
   }
 

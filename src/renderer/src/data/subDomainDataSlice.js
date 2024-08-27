@@ -13,8 +13,8 @@ const initialState = {
   /*爆破参数*/
   bruteFinishCount: 0,
   bruteTotalCount: 0,
-  concurrent: 30,
-  timeout: 3000,
+  concurrent: 100,
+  timeout: 2000,
   /*流量搜集参数*/
   deep: 2,
   waitTime: 0

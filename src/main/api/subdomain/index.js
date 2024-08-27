@@ -1,4 +1,4 @@
-import { SubDomainBrute } from '../../class/SubDomainBrute';
+import { SubDomainBrute } from '../../service/SubDomainBrute';
 
 export const bruteSubDomain = (event, options) => {
   const { domainList, concurrent, timeout } = options;

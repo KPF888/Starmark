@@ -261,6 +261,7 @@ const SubDomain = () => {
             min={1}
             onChange={handleConcurrentChange}
           />
+          <p className={'ml-1'}>(建议不高于1000)</p>
         </div>
 
         <div className="brute-timeout flex justify-start items-center">
@@ -270,7 +271,7 @@ const SubDomain = () => {
             min={10}
             onChange={(value) => dispatch(setBruteTimeout(value))}
           />
-          <p className={'ml-1'}>(建议不低于3000ms)</p>
+          <p className={'ml-1'}>(建议不低于1000ms)</p>
         </div>
       </Space>
 

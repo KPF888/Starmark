@@ -1,6 +1,6 @@
 import { BrowserWindow, ipcMain, shell } from 'electron';
 import icon from '../../../resources/icon.png';
-import path, { join } from 'path';
+import { join } from 'path';
 import { is } from '@electron-toolkit/utils';
 import os from 'os';
 import {
@@ -10,9 +10,9 @@ import {
 } from '../config/index.js';
 import { regAllApi } from '../api/index.js';
 import SubDomain from './SubDomain.js';
-import SpiderFinder from '../class/SpiderFinder.js';
+import SpiderFinder from '../service/SpiderFinder.js';
 import WorkerPool from '../util/WorkerPool.js';
-import { Worker } from 'worker_threads';
+import DnsWorker from '../util/DnsWorker.js';
 
 export default class MainWindow {
   constructor() {
@@ -20,16 +20,15 @@ export default class MainWindow {
     this.mainWindow = null;
     this.subDomainWindow = null;
     this.spiderFinder = null;
-    this.dnsTPool = null;
-    this.worker = null;
+    this.dnsWorker = null;
     this.isShown = false;
+
     this.createWindow();
     this.initWorkerClass();
     this.regIpcEvent();
     this.regIpcHandle();
     this.createSubDomainWindow();
     this.createWorkerThread();
-    this.createThreadPool();
     this.init();
   }
 
@@ -78,13 +77,8 @@ export default class MainWindow {
     });
   }
 
-  createThreadPool() {
-    const threadNumbers = os.cpus().length;
-    this.dnsTPool = new WorkerPool(threadNumbers, 'dnsProcessor.js');
-  }
-
   createWorkerThread() {
-    this.worker = new Worker(path.join(__dirname, 'dnsProcessor.js'));
+    this.dnsWorker = new DnsWorker();
   }
 
   regIpcEvent() {
@@ -96,7 +90,7 @@ export default class MainWindow {
     ipcMain.handle('setConfig', handleSetConfig);
     ipcMain.handle('getConfig', handleGetConfig);
     ipcMain.handle('getAllConfig', getAllConfig);
-    ipcMain.handle('dns-resolve', (...args) => this.resolveDns2(...args));
+    ipcMain.handle('dns-resolve', (...args) => this.resolveDns(...args));
     ipcMain.handle('spider-search', (_ev, ...args) =>
       this.spiderSearch(_ev, ...args)
     );
@@ -105,33 +99,23 @@ export default class MainWindow {
 
   resolveDns(_ev, domain) {
     return new Promise((resolve) => {
-      this.dnsTPool.runTask(domain, (err, addr) => {
-        if (err || !addr) {
-          // 子域名未找到或解析错误
-          // console.log('err');
+      this.dnsWorker
+        .resolve(domain)
+        .then((addr) => {
+          if (!addr) {
+            // 子域名未找到或解析错误
+            // console.log('err');
+            resolve(null);
+          } else {
+            // 找到子域名
+            console.log(`${domain} : ${addr}`);
+            resolve({ domain, addr });
+          }
+        })
+        .catch((error) => {
+          console.error(`Error resolving domain ${domain}:`, error);
           resolve(null);
-        } else {
-          // 找到子域名
-          console.log(`${domain} : ${addr}`);
-          resolve({ domain, addr });
-        }
-      });
-    });
-  }
-
-  resolveDns2(_ev, domain) {
-    this.worker.postMessage(domain);
-    return new Promise((resolve) => {
-      this.worker.on('message', (addr) => {
-        if (!addr) {
-          // 子域名未找到或解析错误
-          resolve(null);
-        } else {
-          // 找到子域名
-          console.log(`${domain} : ${addr}`);
-          resolve({ domain, addr });
-        }
-      });
+        });
     });
   }
 
