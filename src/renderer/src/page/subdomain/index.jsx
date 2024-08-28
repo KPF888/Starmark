@@ -258,7 +258,7 @@ const SubDomain = () => {
             min={1}
             onChange={handleConcurrentChange}
           />
-          <p className={'ml-1'}>(建议不高于1000)</p>
+          <p className={'ml-1'}>(根据网络情况自行调节,建议不高于200)</p>
         </div>
 
         <div className="brute-timeout flex justify-start items-center">

@@ -13,6 +13,7 @@ export default class DnsWorker {
 
   initEvent() {
     this.worker.on('message', (result) => {
+      // console.log(result);
       this.resQueue.push(result);
       if (this.resolvePromise) {
         const resolve = this.resolvePromise;

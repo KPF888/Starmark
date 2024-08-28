@@ -99,13 +99,14 @@ export default class MainWindow {
     return new Promise((resolve) => {
       this.dnsWorker
         .resolve(domain)
-        .then((addr) => {
-          if (!addr) {
+        .then((res) => {
+          if (!res) {
             // 子域名未找到或解析错误
             // console.log('err');
             resolve(null);
           } else {
             // 找到子域名
+            const { domain, addr } = res;
             console.log(`${domain} : ${addr}`);
             resolve({ domain, addr });
           }
