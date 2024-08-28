@@ -28,11 +28,6 @@ function initConfigFile() {
     fs.mkdirSync(CONFIG_DIR_PRO);
     console.log('创建config文件夹成功');
   }
-
-  // // 判断config文件夹下是否有config.json文件，没有则创建
-  // if (!fs.existsSync(CONFIG_PATH)) {
-  //   fs.writeFileSync(CONFIG_PATH, '{}');
-  // }
 }
 
 const handleGetConfig = (event, key) => {
@@ -44,6 +39,7 @@ const handleGetConfig = (event, key) => {
 const handleSetConfig = (event, key, value) => {
   initConfigFile();
   // 向store中设置配置
+  console.log('set config:', key, value);
   store.set(key, value);
 };
 

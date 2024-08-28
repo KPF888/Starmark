@@ -23,8 +23,8 @@ export class SubDomainBrute {
     this.setSubDomain = setSubDomain;
   }
 
-  async _initDict() {
-    this._dict = await ipcRenderer.invoke('get-dict');
+  async _initDict(dictPath) {
+    this._dict = await ipcRenderer.invoke('get-dict', dictPath);
   }
 
   // 解析子域名的函数
@@ -62,10 +62,11 @@ export class SubDomainBrute {
    * @param timeout 超时时间
    * @param setTotal
    * @param setFinished
+   * @param dictPath
    * @returns
    */
-  async bruteForceSubdomains(timeout, setTotal, setFinished) {
-    await this._initDict();
+  async bruteForceSubdomains(timeout, setTotal, setFinished, dictPath) {
+    await this._initDict(dictPath);
     const taskList = this._domainList
       .map((domain) => {
         const task = [];

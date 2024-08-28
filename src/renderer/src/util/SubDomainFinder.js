@@ -40,57 +40,7 @@ class SubDomainFinder {
     return ipcRenderer.invoke('spider-search', ...args);
   }
 
-  async getByBrute(timeout) {
-    // 接收数据更新视图的回调函数
-    function _updateSubDomainList({
-      setSubDomain,
-      setBruteTotalCount,
-      setBruteFinishCount
-    }) {
-      let lastAll = 0;
-      let lastFinish = 0;
-      window.electron.ipcRenderer.on(
-        'bruteRes',
-        (event, { res, finished, all }) => {
-          if (finished - lastFinish > 50) {
-            setBruteFinishCount(finished);
-            lastFinish = finished;
-          } else if (all === finished) {
-            setBruteFinishCount(finished);
-          }
-          if (all !== lastAll) {
-            setBruteTotalCount(all);
-            lastAll = all;
-          }
-
-          if (res) {
-            console.log('bruteRes', res);
-            message.success(
-              `${res}存在,已爆破${finished}个子域名，总共${all}个`
-            );
-            setSubDomain(res);
-          }
-        }
-      );
-    }
-
-    _updateSubDomainList({
-      setSubDomain: this._setSubDomain,
-      setBruteTotalCount: this._updateBruteTotalCount,
-      setBruteFinishCount: this._updateBruteFinishCount
-    });
-
-    const options = {
-      domainList: this._domainList,
-      concurrent: this._concurrent,
-      timeout
-    };
-    console.log('_getByBrute', options);
-
-    return ipcRenderer.invoke('bruteSubDomain', options);
-  }
-
-  getByBrute2(timeout) {
+  getByBrute(timeout, dictPath) {
     const brute = new SubDomainBrute(
       this._domainList,
       this._setSubDomain,
@@ -99,7 +49,8 @@ class SubDomainFinder {
     return brute.bruteForceSubdomains(
       timeout,
       this._updateBruteTotalCount,
-      this._updateBruteFinishCount
+      this._updateBruteFinishCount,
+      dictPath
     );
   }
 }

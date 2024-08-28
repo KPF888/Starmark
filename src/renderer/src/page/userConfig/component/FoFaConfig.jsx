@@ -23,66 +23,64 @@ function FoFaConfig() {
   };
 
   return (
-    <Col span={12}>
-      <Card title="FoFa配置">
-        <Form
-          name="basic"
-          labelCol={{
-            span: 8
-          }}
+    <Card title="FoFa配置">
+      <Form
+        name="basic"
+        labelCol={{
+          span: 8
+        }}
+        wrapperCol={{
+          span: 16
+        }}
+        style={{
+          maxWidth: 500
+        }}
+        initialValues={{
+          fofaApiUri: fofaUri,
+          fofaApiKey: fofaApiKey
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      >
+        <Form.Item
+          label="fofaApi地址"
+          name="fofaApiUri"
+          rules={[
+            {
+              required: true,
+              message: '请输入fofaApi地址!'
+            }
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="fofaApiKey"
+          name="fofaApiKey"
+          rules={[
+            {
+              required: true,
+              message: '请输入FoFaApiKey!'
+            }
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
           wrapperCol={{
+            offset: 8,
             span: 16
           }}
-          style={{
-            maxWidth: 500
-          }}
-          initialValues={{
-            fofaApiUri: fofaUri,
-            fofaApiKey: fofaApiKey
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
         >
-          <Form.Item
-            label="fofaApi地址"
-            name="fofaApiUri"
-            rules={[
-              {
-                required: true,
-                message: '请输入fofaApi地址!'
-              }
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="fofaApiKey"
-            name="fofaApiKey"
-            rules={[
-              {
-                required: true,
-                message: '请输入FoFaApiKey!'
-              }
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16
-            }}
-          >
-            <Button type="primary" htmlType="submit">
-              保存
-            </Button>
-          </Form.Item>
-        </Form>
-      </Card>
-    </Col>
+          <Button type="primary" htmlType="submit">
+            保存
+          </Button>
+        </Form.Item>
+      </Form>
+    </Card>
   );
 }
 

@@ -1,8 +1,4 @@
-import {
-  FileOutlined,
-  LoadingOutlined,
-  SearchOutlined
-} from '@ant-design/icons';
+import { LoadingOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button, InputNumber, List, message, Space, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +19,7 @@ import {
   setWaitTime
 } from '../../data/subDomainDataSlice';
 import SubDomainListWindow from '../../event/SubDomainListWindow.js';
+import FileSelector from '../../component/FileSelector.jsx';
 
 const SubDomain = () => {
   const { ipcRenderer } = electron;
@@ -37,7 +34,8 @@ const SubDomain = () => {
     flowLoading,
     timeout,
     deep,
-    waitTime
+    waitTime,
+    dictPath
   } = useSelector((state) => state.subDomainData);
   const dispatch = useDispatch();
   const { fofaApiKey: fofaKey, fofaUri: fofaUrl } = useSelector(
@@ -81,12 +79,13 @@ const SubDomain = () => {
   /** 事件处理函数 */
   async function fileHandleClick() {
     const fileUtil = new FileUtil('.file-input');
+    await fileUtil.build();
     try {
       const content = await fileUtil.getFileText();
       const newDL = content.trim().split('\r\n');
       message.success('根域名文件读取成功');
 
-      setCurrentName(fileUtil.getFileName());
+      setCurrentName(await fileUtil.getFileName());
       setDomainList(newDL);
     } catch (e) {
       message.warning(e);
@@ -108,7 +107,8 @@ const SubDomain = () => {
       timeout,
       deep,
       waitTime,
-      action
+      action,
+      dictPath
     };
 
     try {
@@ -213,14 +213,11 @@ const SubDomain = () => {
     <>
       <Space className="action-search flex pl-1">
         <div className="file-selector">
-          <input
-            type="file"
-            style={{ display: 'none' }}
-            className="file-input"
+          <FileSelector
+            fileClassName={'file-input'}
+            onClick={fileHandleClick}
+            currentName={currentName}
           />
-          <Button icon={<FileOutlined />} onClick={fileHandleClick}>
-            {currentName}
-          </Button>
         </div>
 
         <Button
@@ -300,7 +297,7 @@ const SubDomain = () => {
         </Space>
       </Space>
 
-      <div className="domain-list mt-5">
+      <div className="domain-list mt-5 h-[70%]">
         <div className="domain-list-root">
           <List
             header={<div>根域名列表:</div>}

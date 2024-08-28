@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import './assets/scss/app.scss';
 import { initFofaConfig } from './data/userConfigDataSlice.js';
+import { initDictPath } from './data/subDomainDataSlice.js';
 
 const { ipcRenderer } = electron;
 
@@ -46,6 +47,7 @@ const App = () => {
         ...store.fofaConfig
       })
     );
+    dispatch(initDictPath(store.dictPath));
   }
   useEffect(() => {
     loadConfig();
@@ -100,13 +102,6 @@ const App = () => {
           </Suspense>
         </div>
       </Content>
-      <Footer
-        style={{
-          textAlign: 'center'
-        }}
-      >
-        星痕收集工具 ©2024 Created by Dasheng@Kpf
-      </Footer>
     </Layout>
   );
 };

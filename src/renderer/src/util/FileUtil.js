@@ -1,34 +1,59 @@
 class FileUtil {
   constructor(elementClass) {
+    this.file = null;
+    this.element = null;
+
+    this._init(elementClass);
+  }
+
+  _init(elementClass) {
+    this._getElement(elementClass);
+  }
+
+  _getElement(elementClass) {
     const element = document.querySelector(elementClass);
     if (element.type !== 'file') {
       throw new Error('文件工具必须传入file类型的input');
     }
-    this._element = element;
+    this.element = element;
   }
 
-  getFileText() {
-    const fileInput = this._element;
+  build() {
     return new Promise((resolve, reject) => {
+      const fileInput = this.element;
       fileInput.click();
-      const reader = new FileReader();
-      let content;
       fileInput.onchange = () => {
-        const file = fileInput.files[0];
-        if (!file) {
-          return;
+        this.file = fileInput.files[0];
+        if (!this.file) {
+          reject('no file');
         }
-        reader.readAsText(file, 'utf-8');
-      };
-      reader.onload = (ev) => {
-        content = ev.target.result;
-        resolve(content);
+        resolve(true);
       };
     });
   }
 
-  getFileName() {
-    return this._element.files[0].name;
+  async getFileText() {
+    return new Promise((resolve, reject) => {
+      try {
+        const reader = new FileReader();
+        let content;
+        reader.readAsText(this.file, 'utf-8');
+        reader.onload = (ev) => {
+          content = ev.target.result;
+          resolve(content);
+        };
+      } catch (e) {
+        reject(e.message);
+      }
+    });
+  }
+
+  async getFileName() {
+    return this.element.files[0].name;
+  }
+
+  async getFilePath() {
+    return this.element.files[0].path;
   }
 }
 

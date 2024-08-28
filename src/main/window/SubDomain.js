@@ -64,14 +64,21 @@ export default class SubDomain {
     ipcMain.removeAllListeners('close-subdomain-window');
   }
 
-  getDict(_ev) {
+  getDict(_ev, dictPath) {
+    console.log('dictPath:', dictPath);
     // 子域名字典文件路径
-    const subdomainsFile = path.join(CONFIG_PATH, 'subdomain.txt');
+    let dictFilePath;
+    if (dictPath) {
+      dictFilePath = dictPath;
+    } else {
+      dictFilePath = path.join(CONFIG_PATH, 'subdomain.txt');
+    }
+    console.log('dictFilePath:', dictFilePath);
     try {
       // 从文件中读取子域名
-      return fs.readFileSync(subdomainsFile, 'utf8').trim().split('\r\n');
+      return fs.readFileSync(dictFilePath, 'utf8').trim().split('\r\n');
     } catch (err) {
-      throw new Error(`无法读取子域名字典文件: ${subdomainsFile},原因:${err}`);
+      throw new Error(`无法读取子域名字典文件: ${dictFilePath},原因:${err}`);
     }
   }
 

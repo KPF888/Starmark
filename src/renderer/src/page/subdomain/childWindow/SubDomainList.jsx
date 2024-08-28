@@ -21,7 +21,8 @@ const SubDomainList = () => {
     concurrent,
     fofaConfig,
     timeout,
-    action
+    action,
+    dictPath
   } = JSON.parse(searchParams.get('params'));
   const [sFinder, setSFinder] = useState(
     new SubDomainFinder({
@@ -146,7 +147,7 @@ const SubDomainList = () => {
       message.info('开始爆破收集');
       setSearchText('爆破收集中');
       console.log('timeout: ', timeout);
-      await sFinder.getByBrute2(timeout);
+      await sFinder.getByBrute(timeout, dictPath);
       message.success('爆破收集完成!');
     } catch (e) {
       message.error(e.message);

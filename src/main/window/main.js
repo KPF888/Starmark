@@ -2,7 +2,6 @@ import { BrowserWindow, ipcMain, shell } from 'electron';
 import icon from '../../../resources/icon.png';
 import { join } from 'path';
 import { is } from '@electron-toolkit/utils';
-import os from 'os';
 import {
   getAllConfig,
   handleGetConfig,
@@ -11,7 +10,6 @@ import {
 import { regAllApi } from '../api/index.js';
 import SubDomain from './SubDomain.js';
 import SpiderFinder from '../service/SpiderFinder.js';
-import WorkerPool from '../util/WorkerPool.js';
 import DnsWorker from '../util/DnsWorker.js';
 
 export default class MainWindow {

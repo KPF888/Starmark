@@ -15,6 +15,7 @@ const initialState = {
   bruteTotalCount: 0,
   concurrent: 100,
   timeout: 2000,
+  dictPath: null,
   /*流量搜集参数*/
   deep: 2,
   waitTime: 0
@@ -67,6 +68,9 @@ const subDomainDataSlice = createSlice({
     setWaitTime(state, action) {
       state.waitTime = action.payload;
     },
+    setDictPath(state, action) {
+      state.dictPath = action.payload;
+    },
     resetState: (state, action) => {
       // 重置状态
       const {
@@ -78,7 +82,8 @@ const subDomainDataSlice = createSlice({
         timeout,
         /*流量搜集参数*/
         deep,
-        waitTime
+        waitTime,
+        dictPath
       } = state;
       return {
         ...initialState,
@@ -88,10 +93,15 @@ const subDomainDataSlice = createSlice({
         bruteTotalCount,
         concurrent,
         timeout,
+        dictPath,
         /*流量搜集参数*/
         deep,
         waitTime
       };
+    },
+    initDictPath(state, action) {
+      // 整体修改state的值
+      state.dictPath = action.payload
     }
   }
 });
@@ -110,6 +120,8 @@ export const {
   setFlowLoading,
   setBruteTimeout,
   setDeep,
-  setWaitTime
+  setWaitTime,
+  setDictPath,
+  initDictPath
 } = subDomainDataSlice.actions;
 export default subDomainDataSlice.reducer;
