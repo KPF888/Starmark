@@ -5,3 +5,5 @@
 !/dist/*.exe
 
 !/.gitignore
+
+!/README_CN.md
