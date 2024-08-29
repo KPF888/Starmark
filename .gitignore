@@ -1,32 +1,5 @@
-# lib
-node_modules
+# 忽略所有文件
+*
 
-# outFile
-dist
-out
-
-# test
-test
-
-# dev tools config
-.DS_Store
-.idea
-.editorconfig
-
-# logs
-*.log*
-
-#config
-config/configration.json
-config/subdomain.txt.small
-
-# eslintconfig
-.eslintignore
-.eslintrc.cjs
-
-# prettier
-.prettierignore
-.prettierrc.yaml
-
-# cmd
-note
+# 取消忽略指定格式的安装包文件
+!/dist/*.exe
