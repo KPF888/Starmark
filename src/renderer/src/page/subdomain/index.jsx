@@ -1,5 +1,5 @@
 import { LoadingOutlined, SearchOutlined } from '@ant-design/icons';
-import { Button, InputNumber, List, message, Space, Spin } from 'antd';
+import { Alert, Button, InputNumber, List, message, Space, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../assets/scss/subdomain.scss';
@@ -46,6 +46,14 @@ const SubDomain = () => {
     fofaUrl
   };
   const [currentName, setCurrentName] = useState('选择根域名列表');
+  const alertMsg = (
+    <span>
+      <div>
+        爆破并发默认100已经能够持平甚至超过市面上的大多数子域名爆破器,当然如果网络情况非常好的情况下可以稍微调高并发数
+      </div>
+      <div>如果由于调高并发数而使得丢包率变高那么请同步调高超时时间</div>
+    </span>
+  );
 
   /*条件渲染组件*/
   let spin = null;
@@ -58,12 +66,6 @@ const SubDomain = () => {
 
   /*hook*/
   useEffect(() => {
-    /* 清除旧的监听器 */
-    ipcRenderer.removeAllListeners(SubDomainListWindow.FINISH_FOFA_CHANNEL);
-    ipcRenderer.removeAllListeners(SubDomainListWindow.FINISH_BRUTE_CHANNEL);
-    ipcRenderer.removeAllListeners(SubDomainListWindow.FINISH_FLOW_CHANNEL);
-    ipcRenderer.removeAllListeners('subdomain-closed');
-
     /*监听子窗口关闭*/
     ipcRenderer.on('subdomain-closed', handleCloseSubDomainWindow);
     /*注册主窗口*/
@@ -74,6 +76,14 @@ const SubDomain = () => {
     ipcRenderer.on(SubDomainListWindow.FINISH_BRUTE_CHANNEL, bruteFinish);
     /*监听爬虫收集完成事件*/
     ipcRenderer.on(SubDomainListWindow.FINISH_FLOW_CHANNEL, spiderFinish);
+
+    return () => {
+      /* 清除旧的监听器 */
+      ipcRenderer.removeAllListeners(SubDomainListWindow.FINISH_FOFA_CHANNEL);
+      ipcRenderer.removeAllListeners(SubDomainListWindow.FINISH_BRUTE_CHANNEL);
+      ipcRenderer.removeAllListeners(SubDomainListWindow.FINISH_FLOW_CHANNEL);
+      ipcRenderer.removeAllListeners('subdomain-closed');
+    };
   }, []);
 
   /** 事件处理函数 */
@@ -211,6 +221,12 @@ const SubDomain = () => {
 
   return (
     <>
+      <Alert
+        className={'mb-5'}
+        message={alertMsg}
+        type={'warning'}
+        showIcon={true}
+      ></Alert>
       <Space className="action-search flex pl-1">
         <div className="file-selector">
           <FileSelector
@@ -297,7 +313,7 @@ const SubDomain = () => {
         </Space>
       </Space>
 
-      <div className="domain-list mt-5 h-[70%]">
+      <div className="domain-list mt-5 h-3/5">
         <div className="domain-list-root">
           <List
             header={<div>根域名列表:</div>}
