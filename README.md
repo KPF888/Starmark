@@ -1,48 +1,53 @@
-#                                                                 		                                     星痕
+<h1 align="center">星痕</h4>
 
 <h4 align="center">一款为红队前期打点赋能的资产信息收集工具</h4>
 
-
 <p align="center">
-<img src="https://img.shields.io/github/go-mod/go-version/projectdiscovery/nuclei">
-<a href="https://github.com/projectdiscovery/nuclei/releases"><img src="https://img.shields.io/github/downloads/projectdiscovery/nuclei/total">
-<a href="https://github.com/projectdiscovery/nuclei/graphs/contributors"><img src="https://img.shields.io/github/contributors-anon/projectdiscovery/nuclei">
-<a href="https://github.com/projectdiscovery/nuclei/releases/"><img src="https://img.shields.io/github/release/projectdiscovery/nuclei">
-<a href="https://github.com/projectdiscovery/nuclei/issues"><img src="https://img.shields.io/github/issues-raw/projectdiscovery/nuclei">
-<a href="https://github.com/projectdiscovery/nuclei/discussions"><img src="https://img.shields.io/github/discussions/projectdiscovery/nuclei">
-<a href="https://discord.gg/projectdiscovery"><img src="https://img.shields.io/discord/695645237418131507.svg?logo=discord"></a>
-<a href="https://twitter.com/pdnuclei"><img src="https://img.shields.io/twitter/follow/pdnuclei.svg?logo=twitter"></a>
+  <!-- Node版本 -->
+  <img src="https://img.shields.io/badge/Node-v20.10.0-blue"/>
+  <img src="https://img.shields.io/badge/Electron-v32.0.0-blue"/>
+  <!-- 下载量 -->
+  <a href="https://github.com/KPF888/Starmark/releases">
+    <img src="https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%E9%87%8F-88-green"/></a>
+  <!-- 贡献者 -->
+  <a href="https://github.com/KPF888/Starmark/graphs/contributors">
+    <img src="https://img.shields.io/badge/%E8%B4%A1%E7%8C%AE%E8%80%85-2-green"/></a>
+  <!-- 内测版本 -->
+  <a href="https://github.com/KPF888/Starmark/releases">
+    <img src="https://img.shields.io/badge/%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC-v0.0.1-blue"/></a>
+  <!-- 问题数量 -->
+  <a href="https://github.com/KPF888/Starmark/issues">
+    <img src="https://img.shields.io/badge/issue-0-yellow"/></a>
+  <!-- 官方群组 -->
+  <a href="https://qm.qq.com/q/cHYSFTF4UU">
+    <img src="https://img.shields.io/badge/QQ%E7%BE%A4-805411168-yellow"/></a>
 </p>
 
 <p align="center">
   <a href="#工作流程">工作流程</a> •
-  <a href="#安装Nuclei">安装</a> •
+  <a href="#安装Starmark">安装</a> •
   <a href="#对于安全工程师">对于安全工程师</a> •
   <a href="#对于开发和组织">对于开发者</a> •
-  <a href="https://nuclei.projectdiscovery.io/nuclei/get-started/">文档</a> •
+  <a href="https://github.com/KPF888/Starmark/blob/dist/README.md">文档</a> •
   <a href="#致谢">致谢</a> •
-  <a href="https://docs.projectdiscovery.io/tools/nuclei/faq">常见问题</a> •
-  <a href="https://discord.gg/projectdiscovery">加入Discord</a>
+  <a href="">常见问题</a> •
+  <a href="https://qm.qq.com/q/cHYSFTF4UU">加入QQ</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/projectdiscovery/nuclei/blob/main/README.md">English</a> •
-  <a href="https://github.com/projectdiscovery/nuclei/blob/main/README_CN.md">中文</a> •
-  <a href="https://github.com/projectdiscovery/nuclei/blob/main/README_KR.md">Korean</a> •
-  <a href="https://github.com/projectdiscovery/nuclei/blob/main/README_ID.md">Indonesia</a> •
-  <a href="https://github.com/projectdiscovery/nuclei/blob/main/README_ES.md">Spanish</a>
+  <a href="https://github.com/KPF888/Starmark/blob/dist/README.md">中文</a> •
+  <a href="https://github.com/KPF888/Starmark/blob/dist/README_EN.md">English</a>
 </p>
 
 ---
 
 星痕目前使用多个空间测绘、DNS爆破、互联网时光机、代码托管平台、vt查杀、证书、爬虫递归7个部分作为数据来源，对域名、IP、敏感信息等进行一键化收集操作，为前期资产收集提供极大便利。
 
-
-| :exclamation:  **免责声明**  |
-|---------------------------------|
-| **这个项目正在积极开发中**。预计发布会带来突破性的更改。更新前请查看版本更改日志。 |
+| :exclamation: **免责声明**                                                                                                              |
+| --------------------------------------------------------------------------------------------------------------------------------------- |
+| **这个项目正在积极开发中**。预计发布会带来突破性的更改。更新前请查看版本更改日志。                                                      |
 | 这个项目主要是为了做资产收集/信息收集而开创的。 **工具只建议从本项目中下载，从其他途径下载的exe可能会有风险，检测出问题作者概不负责。** |
-| **本工具仅供学习使用，由于用户使用该工具造成任何单位个体的任何损失本项目概不负责** |
+| **本工具仅供学习使用，由于用户使用该工具造成任何单位个体的任何损失本项目概不负责**                                                      |
 
 # 安装星痕
 
@@ -56,22 +61,15 @@ git release地址：
 https://github.com/KPF888/Starmark/releases
 ```
 
-## 安装详细使用介绍视频
-
-```
-http://bilibili.com
-```
-
 ## 星痕不同功能模块介绍
 
 ### 空间测绘
 
 ```sh
-星痕将提供FOFA、hunter鹰图、xxx、xxxx等多个空间测绘api接口
+星痕将提供FOFA、VT等多个空间测绘api接口
 ```
 
 ### DNS爆破
-
 
 ```console
 DNS爆破功能针对目标域名进行暴力破解，获取与其关联的子域名、IP地址等信息。该功能采用高效的破解算法，支持自定义字典。通过DNS爆破，用户可以挖掘出潜在的重要资产，为资产收集提供有力补充。
@@ -108,15 +106,8 @@ DNS爆破功能针对目标域名进行暴力破解，获取与其关联的子�
 爬虫递归访问链接的深度。深度越大，爬虫可能发现的子域名越多，但资源消耗和时间也会增加。当资源过多时，建议不超过3层，资源较少时可尝试5层。
 ```
 
-
-
-
-
 ### 致谢
 
-感谢所有[社区贡献者提供的PR](https://github.com/projectdiscovery/nuclei/graphs/contributors)，并不断更新此项目:heart:
+感谢所有[社区贡献者提供的PR]()，并不断更新此项目:heart:
 
 如果你有想法或某种改进，欢迎你参与该项目，随时发送你的PR。
-
-
-
