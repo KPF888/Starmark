@@ -53,8 +53,6 @@
 
 windows用户直接下载项目最新版release即可
 
-mac、linux用户暂时不提供安装包，后续再更新
-
 git release地址：
 
 ```sh
