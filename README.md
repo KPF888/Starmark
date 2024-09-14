@@ -51,7 +51,7 @@
 
 # 安装星痕
 
-windows用户直接下载项目最新版release即可
+直接下载项目最新版release即可
 
 git release地址：
 
