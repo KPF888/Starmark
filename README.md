@@ -6,18 +6,18 @@
   <!-- Node版本 -->
   <img src="https://img.shields.io/badge/Node-v20.10.0-blue"/>
   <img src="https://img.shields.io/badge/Electron-v32.0.0-blue"/>
-  <!-- 下载量 -->
+  <!-- 下载量 - 使用动态徽章 -->
   <a href="https://github.com/KPF888/Starmark/releases">
-    <img src="https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%E9%87%8F-88-green"/></a>
-  <!-- 贡献者 -->
+    <img src="https://img.shields.io/github/downloads/KPF888/Starmark/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F&color=green"/></a>
+  <!-- 贡献者 - 手动设置为2 -->
   <a href="https://github.com/KPF888/Starmark/graphs/contributors">
     <img src="https://img.shields.io/badge/%E8%B4%A1%E7%8C%AE%E8%80%85-2-green"/></a>
-  <!-- 内测版本 -->
+  <!-- 版本 - 包含预发布版本 -->
   <a href="https://github.com/KPF888/Starmark/releases">
-    <img src="https://img.shields.io/badge/%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC-v0.0.1-blue"/></a>
-  <!-- 问题数量 -->
+    <img src="https://img.shields.io/github/v/release/KPF888/Starmark?include_prereleases&label=%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC&color=blue"/></a>
+  <!-- Issues数量 - 使用动态徽章 -->
   <a href="https://github.com/KPF888/Starmark/issues">
-    <img src="https://img.shields.io/badge/issue-0-yellow"/></a>
+    <img src="https://img.shields.io/github/issues/KPF888/Starmark?label=issue&color=yellow"/></a>
   <!-- 官方群组 -->
   <a href="https://qm.qq.com/q/cHYSFTF4UU">
     <img src="https://img.shields.io/badge/QQ%E7%BE%A4-805411168-yellow"/></a>
@@ -36,7 +36,10 @@
 
 <p align="center">
   <a href="https://github.com/KPF888/Starmark/blob/dist/README.md">中文</a> •
-  <a href="https://github.com/KPF888/Starmark/blob/dist/README_EN.md">English</a>
+  <a href="https://github.com/KPF888/Starmark/blob/dist/README_EN.md">English</a> •
+  <a href="https://github.com/KPF888/Starmark/blob/dist/README_JP.md">日本語</a> •
+  <a href="https://github.com/KPF888/Starmark/blob/dist/README_KR.md">한국어</a> •
+  <a href="https://github.com/KPF888/Starmark/blob/dist/README_RU.md">Русский</a>
 </p>
 
 ---
@@ -106,6 +109,9 @@ DNS爆破功能针对目标域名进行暴力破解，获取与其关联的子�
 
 ### 致谢
 
-感谢所有[社区贡献者提供的PR]()，并不断更新此项目:heart:
+感谢以下贡献者对项目的支持:heart:：
+
+- 代码贡献者：[@KPF888](https://github.com/KPF888)
+- 思路贡献者：特别感谢[@viking](https://github.com/VK2000)在项目构思和功能设计方面提供的宝贵建议
 
 如果你有想法或某种改进，欢迎你参与该项目，随时发送你的PR。
