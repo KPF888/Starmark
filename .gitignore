@@ -1,1 +1,11 @@
-.idea
+# 忽略所有文件
+*
+*/*
+
+# 不忽略 .gitignore 文件
+!.gitignore
+
+# 不忽略所有 .md 文件
+!*.md
+!*/*.md
+!*/*/md
