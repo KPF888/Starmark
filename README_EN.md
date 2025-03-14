@@ -49,6 +49,7 @@ StarMark currently utilizes 7 different data sources including Space Mapping, DN
 | :exclamation: **Disclaimer**                                                                                                              |
 | --------------------------------------------------------------------------------------------------------------------------------------- |
 | **This project is under active development**. Breaking changes are expected in future releases. Please check the changelog before updating. |
+| **Important Notice: Due to the author's preparation for graduate studies, this project will suspend updates and maintenance for one year, expected to resume in 2026. Thank you for your understanding and support.** |
 | This project is created for asset/information collection purposes. **It is recommended to download the tool only from this project. The author takes no responsibility for any issues with executables downloaded from other sources.** |
 | **This tool is for educational purposes only. The project takes no responsibility for any losses caused by users using this tool.** |
 
