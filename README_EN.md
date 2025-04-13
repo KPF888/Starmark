@@ -44,7 +44,7 @@
 
 ---
 
-StarMark currently utilizes 7 different data sources including Space Mapping, DNS Brute Force, Internet Time Machine, Code Hosting Platforms, VT Scanning, Certificate Search, and Crawler Recursion to perform one-click collection of domains, IPs, and sensitive information, greatly facilitating initial asset collection.
+StarMark currently utilizes 5 different data sources including Space Mapping, DNS Brute Force, VT Scanning, Certificate Search, and Crawler Recursion to perform one-click collection of domains, IPs, and sensitive information, greatly facilitating initial asset collection.
 
 | :exclamation: **Disclaimer**                                                                                                              |
 | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -75,18 +75,6 @@ StarMark provides multiple space mapping API interfaces including FOFA, VT, etc.
 
 ```console
 The DNS brute force feature performs brute force attacks on target domains to obtain associated subdomains and IP addresses. This feature employs efficient cracking algorithms and supports custom dictionaries. Through DNS brute force, users can discover potential important assets, providing powerful supplements for asset collection.
-```
-
-### Internet Time Machine
-
-```sh
-The Internet Time Machine feature uses web crawler technology to collect and analyze historical data of target websites. By comparing data from different time points, users can understand the development trajectory of target websites and discover potential security issues. Additionally, the Internet Time Machine can help users uncover deleted sensitive information, improving the comprehensiveness of information collection.
-```
-
-### Code Hosting Platforms
-
-```sh
-The code hosting platform feature collects information from mainstream platforms like GitHub and GitLab, mining sensitive information such as target project code, commit records, branches, and tags. By analyzing this information, users can discover potential vulnerabilities in projects, providing basis for subsequent vulnerability discovery and exploitation.
 ```
 
 ### VT Online Scanning
